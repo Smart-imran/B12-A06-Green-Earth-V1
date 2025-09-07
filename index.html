@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GREEN-EARTH | Home</title>
+    <!-- tailwind+daisy Ui cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar bg-green-700 text-white px-6 fixed top-0 z-10">
+        <!-- Left side: Hamburger + Logo -->
+        <div class="navbar-start flex items-center gap-2">
+          <!-- Hamburger (mobile only) -->
+          <div class="dropdown lg:hidden">
+            <label tabindex="0" class="btn btn-ghost text-white text-xl">
+              <i class="fa-solid fa-bars"></i>
+            </label>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-700 rounded-box w-52"
+            >
+              <li><a>About</a></li>
+              <li><a>Gallery</a></li>
+              <li><a>Campaign</a></li>
+            </ul>
+          </div>
+
+          <!-- Logo -->
+          <a class="text-2xl font-bold flex items-center gap-2">
+            <i class="fa-solid fa-leaf"></i> Green Earth
+          </a>
+        </div>
+
+        <!-- Center menu (desktop only) -->
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>About</a></li>
+            <li><a>Gallery</a></li>
+            <li><a>Campaign</a></li>
+          </ul>
+        </div>
+
+        <!-- Right side button (always visible) -->
+        <div class="navbar-end">
+          <button class="btn btn-warning font-bold">Plant a Tree</button>
+        </div>
+      </div>
+    </header>
+
+    
+  </body>
+</html>
