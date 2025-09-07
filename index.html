@@ -65,7 +65,11 @@
         </div>
 
         <div class="navbar-end">
-          <button class="bg-[#FACC15] hover:bg-[#EAB308] p-2 font-bold rounded-4xl text-[#15803D]">Plant a Tree</button>
+          <button
+            class="bg-[#FACC15] hover:bg-[#EAB308] p-2 font-bold rounded-4xl text-[#15803D]"
+          >
+            Plant a Tree
+          </button>
         </div>
       </div>
     </header>
@@ -84,16 +88,54 @@
           "
         ></div>
         <!-- content -->
-        <div class="hero-content text-center text-black relative">
+        <div class="hero-content text-center relative">
           <div class="mx-auto">
-            <h1 class="mb-5 text-4xl font-bold">Plant a Tree, Grow a Future</h1>
-            <p class="mb-5">
-              Join our mission to plant 1 million trees and make the Earth greener for <br> future generations.
+            <h1 class="mb-5 text-4xl font-bold text-blue-600 lg:text-black">
+              Plant a Tree, Grow a Future
+            </h1>
+            <p class="mb-5 text-blue-500 lg:text-black">
+              Join our mission to plant 1 million trees and make the Earth
+              greener for
+              <br />
+              future generations.
             </p>
-            <button class="bg-[#FACC15] hover:bg-[#EAB308] px-3 py-2 font-bold rounded-4xl text-[#15803D]">Get Involved</button>
+            <button
+              class="bg-[#FACC15] hover:bg-[#EAB308] px-3 py-2 font-bold rounded-4xl text-[#15803D]"
+            >
+              Get Involved
+            </button>
           </div>
         </div>
       </div>
     </section>
+
+<!-- Categories & Products -->
+ <section class="bg-[#F0FDF4]">
+
+    <div class="grid grid-cols-12 gap-6 p-6">
+    <!-- Categories -->
+    <div class="col-span-3">
+      <h2 class="text-xl font-bold mb-4">Categories</h2>
+      <div id="categories" class="space-y-2"></div>
+    </div>
+
+    <!-- Products -->
+    <div class="col-span-6">
+      <h2 class="text-xl font-bold mb-4 text-center">Choose Your Trees</h2>
+      <div id="products" class="grid grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- Cart -->
+    <div class="col-span-3">
+      <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+      <ul id="cart" class="space-y-2"></ul>
+      <p class="font-bold mt-4">Total: <span id="total">৳0</span></p>
+    </div>
+  </div>
+
+ </section>
+  
+
+<script src="./scripts/script.js"></script>
   </body>
 </html>
