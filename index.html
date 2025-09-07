@@ -17,14 +17,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
+    <!-- Google Font Integration-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css link -->
+
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
   <body>
+    <!-- Navbar -->
     <header>
       <div class="navbar bg-green-700 text-white px-6 fixed top-0 z-10">
-        <!-- Left side: Hamburger + Logo -->
         <div class="navbar-start flex items-center gap-2">
-          <!-- Hamburger (mobile only) -->
           <div class="dropdown lg:hidden">
             <label tabindex="0" class="btn btn-ghost text-white text-xl">
               <i class="fa-solid fa-bars"></i>
@@ -40,27 +51,49 @@
           </div>
 
           <!-- Logo -->
-          <a class="text-2xl font-bold flex items-center gap-2">
+          <a href="" class="text-2xl font-bold flex items-center gap-2">
             <i class="fa-solid fa-leaf"></i> Green Earth
           </a>
         </div>
 
-        <!-- Center menu (desktop only) -->
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
             <li><a>About</a></li>
             <li><a>Gallery</a></li>
-            <li><a>Campaign</a></li>
+            <li><a>Plant a Tree</a></li>
           </ul>
         </div>
 
-        <!-- Right side button (always visible) -->
         <div class="navbar-end">
-          <button class="btn btn-warning font-bold">Plant a Tree</button>
+          <button class="bg-[#FACC15] hover:bg-[#EAB308] p-2 font-bold rounded-4xl text-[#15803D]">Plant a Tree</button>
         </div>
       </div>
     </header>
 
-    
+    <!-- text and image section -->
+    <section class="banner-section">
+      <div class="hero min-h-[400px] relative bg-green-100">
+        <div
+          class="absolute inset-0 pointer-events-none"
+          style="
+            background-image: url('./assets/hero-leaf1.png'),
+              url('./assets/hero-leaf2.png');
+            background-position: left 50px, right 50px;
+            background-repeat: no-repeat, no-repeat;
+            background-size: auto, auto;
+          "
+        ></div>
+        <!-- content -->
+        <div class="hero-content text-center text-black relative">
+          <div class="mx-auto">
+            <h1 class="mb-5 text-4xl font-bold">Plant a Tree, Grow a Future</h1>
+            <p class="mb-5">
+              Join our mission to plant 1 million trees and make the Earth greener for <br> future generations.
+            </p>
+            <button class="bg-[#FACC15] hover:bg-[#EAB308] px-3 py-2 font-bold rounded-4xl text-[#15803D]">Get Involved</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
