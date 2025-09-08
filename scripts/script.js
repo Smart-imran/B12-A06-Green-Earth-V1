@@ -125,18 +125,6 @@ const removeFromCart = (index) => {
   renderCart();
 };
 
-// Modal Details
-const showDetails = async (id) => {
-  showSpinner();
-  const res = await fetch(`https://openapi.programming-hero.com/api/plant/${id}`);
-  const data = await res.json();
-  const plant = data.plant || data.data;
-  document.getElementById("modalTitle").innerText = plant.name;
-  document.getElementById("modalBody").innerText = plant.description;
-  document.getElementById("detailModal").showModal();
-  hideSpinner();
-};
-
 //  Initial Load
 loadCategories();
 loadAllPlants();
