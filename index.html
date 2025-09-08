@@ -145,10 +145,15 @@
         <div class="col-span-1 md:col-span-2">
           <h2 class="text-xl font-bold mb-4">Categories</h2>
           <div id="categories" class="space-y-2"></div>
-        </div>
-
+        </div>        
         <div class="col-span-1 md:col-span-8">
-          <h2 class="text-xl font-bold mb-4 text-center">Choose Your Trees</h2>
+          <h2 class="text-xl font-bold mb-4 text-center">Choose Your Trees</h2>          
+          
+          <!-- Spinner Here -->
+          <div id="products-loader" class="flex justify-center my-5 hidden">
+            <span class="loading loading-spinner text-primary"></span>
+          </div>          
+
           <div
             id="products"
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
@@ -313,6 +318,6 @@
       </div>
     </footer>
 
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/script2.js"></script>
   </body>
 </html>
