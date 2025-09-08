@@ -60,7 +60,7 @@ const displayPlants = (plants) => {
       <p>${plant.description.slice(0, 60)}...</p>
 
       <div class="flex justify-between items-center mt-2">
-        <button class="bg-[#dcfce7] p-1 font-semibold text-[#15803D] rounded-lg">${plant.category}</button>
+        <button class="btn bg-[#dcfce7] p-1 font-semibold text-[#15803D] rounded-lg">${plant.category}</button>
         <span class="font-bold">৳${plant.price}</span>
       </div>
 
