@@ -2,8 +2,7 @@ const categoriesDiv = document.getElementById("categories");
 const productsDiv = document.getElementById("products");
 const cartDiv = document.getElementById("cart");
 const totalDiv = document.getElementById("total");
-const loaderDiv = document.getElementById("products-loader"); // Spinner div
-
+const loaderDiv = document.getElementById("products-loader"); 
 let cart = [];
 let total = 0;
 
