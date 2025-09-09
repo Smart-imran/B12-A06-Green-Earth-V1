@@ -2,7 +2,8 @@ const categoriesDiv = document.getElementById("categories");
 const productsDiv = document.getElementById("products");
 const cartDiv = document.getElementById("cart");
 const totalDiv = document.getElementById("total");
-const loaderDiv = document.getElementById("products-loader"); 
+const loaderDiv = document.getElementById("products-loader");
+
 let cart = [];
 let total = 0;
 
@@ -14,15 +15,15 @@ const hideSpinner = () => {
   loaderDiv.classList.add("hidden");
 };
 
-//  Load Categories
-const loadCategories = async () => {
+// Load Categories
+const loadCategories = () => {
   showSpinner();
-  const res = await fetch(
-    "https://openapi.programming-hero.com/api/categories"
-  );
-  const data = await res.json();
-  displayCategories(data.categories);
-  hideSpinner();
+  fetch("https://openapi.programming-hero.com/api/categories")
+    .then((res) => res.json())
+    .then((data) => {
+      displayCategories(data.categories);
+      hideSpinner();
+    });
 };
 
 const displayCategories = (categories) => {
@@ -36,27 +37,29 @@ const displayCategories = (categories) => {
   });
 };
 
-//  Load All Plants
-const loadAllPlants = async () => {
+// Load All Plants
+const loadAllPlants = () => {
   showSpinner();
-  const res = await fetch("https://openapi.programming-hero.com/api/plants");
-  const data = await res.json();
-  displayPlants(data.plants || data.data);
-  hideSpinner();
+  fetch("https://openapi.programming-hero.com/api/plants")
+    .then((res) => res.json())
+    .then((data) => {
+      displayPlants(data.plants || data.data);
+      hideSpinner();
+    });
 };
 
-//  Load by Category
-const loadCategoryPlants = async (id) => {
+// Load by Category
+const loadCategoryPlants = (id) => {
   showSpinner();
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/category/${id}`
-  );
-  const data = await res.json();
-  displayPlants(data.data || data.plants);
-  hideSpinner();
+  fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      displayPlants(data.data || data.plants);
+      hideSpinner();
+    });
 };
 
-//  Display Plants
+// Display Plants
 const displayPlants = (plants) => {
   productsDiv.innerHTML = "";
   plants.forEach((plant) => {
@@ -65,36 +68,43 @@ const displayPlants = (plants) => {
 
     card.innerHTML = `
     <figure>
-      <img src="${plant.image}" alt="${plant.name}" class="h-40 w-full object-cover"/>
+      <img src="${plant.image}" alt="${plant.name}" 
+        class="h-40 w-full object-cover"/>
     </figure>
 
     <div class="card-body flex flex-col">
-      <h2 class="card-title cursor-pointer text-black" onclick="showDetails(${plant.id})">
+
+      <div class="flex justify-between items-center mt-2">        
+        <button 
+          class="btn bg-[#dcfce7] p-1 font-semibold text-[#15803D] rounded-lg"
+          onclick="loadCategoryPlants('${plant.category_id}')">
+          ${plant.category}
+        </button>
+        <span class="font-bold">৳${plant.price}</span>
+      </div>
+
+      <h2 class="card-title cursor-pointer text-black" 
+          onclick="showDetails(${plant.id})">
         ${plant.name}
       </h2>
       <p>${plant.description.slice(0, 60)}...</p>
 
-      <div class="flex justify-between items-center mt-2">
-        <button class="btn bg-[#dcfce7] p-1 font-semibold text-[#15803D] rounded-lg">${plant.category}</button>
-        <span class="font-bold">৳${plant.price}</span>
+      <div class="mt-auto">
+        <button 
+          class="btn bg-[#15803d] rounded-2xl w-full 
+                 hover:bg-[#1a9148] hover:shadow-md 
+                 transition duration-300 ease-in-out"
+          onclick="addToCart('${plant.name}', ${plant.price})">
+          <span class="text-white">Add to Cart</span>
+        </button>
       </div>
-
-     <div class="mt-auto">
-      <button 
-        class="btn bg-[#15803d] rounded-2xl w-full 
-               hover:bg-[#1a9148] hover:shadow-md 
-               transition duration-300 ease-in-out"
-        onclick="addToCart('${plant.name}', ${plant.price})">
-        <span class="text-white">Add to Cart</span>
-      </button>
-    </div>
     </div>
   `;
     productsDiv.appendChild(card);
   });
 };
 
-//  Cart Add
+// Cart Add
 const addToCart = (name, price) => {
   cart.push({ name, price });
   total += price;
@@ -118,13 +128,25 @@ const renderCart = () => {
   totalDiv.innerText = `৳${total}`;
 };
 
-//  Remove from Cart
+// Remove from Cart
 const removeFromCart = (index) => {
   total -= cart[index].price;
   cart.splice(index, 1);
   renderCart();
 };
 
-//  Initial Load
+// Modal Details
+const showDetails = (id) => {
+  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const plant = data.plant || data.data;
+      document.getElementById("modalTitle").innerText = plant.name;
+      document.getElementById("modalBody").innerText = plant.description;
+      document.getElementById("detailModal").showModal();
+    });
+};
+
+// Initial Load
 loadCategories();
 loadAllPlants();
