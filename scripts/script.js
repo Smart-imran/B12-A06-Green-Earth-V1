@@ -32,12 +32,23 @@ const displayCategories = (categories) => {
     const btn = document.createElement("button");
     btn.className = "btn btn-outline hover:bg-green-400 w-full";
     btn.innerText = cat.category_name;
-    btn.onclick = () => loadCategoryPlants(cat.id);
+    btn.id = `cat-btn-${cat.id}`;
+
+    btn.onclick = () => {
+      
+      document.querySelectorAll("#categories button").forEach((b) =>
+        b.classList.remove("active")
+      );      
+      btn.classList.add("active");
+
+      loadCategoryPlants(cat.id);
+    };
+
     categoriesDiv.appendChild(btn);
   });
 };
 
-// Load All Plants
+
 const loadAllPlants = () => {
   showSpinner();
   fetch("https://openapi.programming-hero.com/api/plants")
@@ -48,7 +59,7 @@ const loadAllPlants = () => {
     });
 };
 
-// Load by Category
+
 const loadCategoryPlants = (id) => {
   showSpinner();
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
@@ -104,14 +115,14 @@ const displayPlants = (plants) => {
   });
 };
 
-// Cart Add
+
 const addToCart = (name, price) => {
   cart.push({ name, price });
   total += price;
   renderCart();
 };
 
-// Render Cart
+
 const renderCart = () => {
   cartDiv.innerHTML = "";
   cart.forEach((item, index) => {
@@ -128,25 +139,14 @@ const renderCart = () => {
   totalDiv.innerText = `৳${total}`;
 };
 
-// Remove from Cart
+
 const removeFromCart = (index) => {
   total -= cart[index].price;
   cart.splice(index, 1);
   renderCart();
 };
 
-// Modal Details
-const showDetails = (id) => {
-  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const plant = data.plant || data.data;
-      document.getElementById("modalTitle").innerText = plant.name;
-      document.getElementById("modalBody").innerText = plant.description;
-      document.getElementById("detailModal").showModal();
-    });
-};
 
-// Initial Load
+
 loadCategories();
 loadAllPlants();
